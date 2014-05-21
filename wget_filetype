@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+if [ $# -ne 2 ]; then
+    echo "usage: $0 comma-separated-extensions url"
+else
+    # -A accept list (comma-separated list of file name suffixes or patterns to accept
+    # -m mirror
+    # -p page requisites (downloads all files necessary to properly display a given HTML page (images, sounds, stylesheets)
+    # -E save the original, unmodified version (links converted with -k flag)
+    # -k Convert links to local
+    # -K back up original version
+    # -np Do not ever ascend to the parent directory
+    wget -A $1 -m -p -E -k -K -np $2
+fi

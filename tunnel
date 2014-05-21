@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+if [ -z "$1" ]
+then
+    echo "usage: $0 host"
+else
+    ssh -D 8080 $1
+fi
