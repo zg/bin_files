@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $# -lt 1 ]; then
+if [ $# -ne 1 ]; then
     echo "usage: $0 filename"
 else
     gcc -Wall -fno-asynchronous-unwind-tables -std=c99 -S -O0 ${1%%.*}.c
