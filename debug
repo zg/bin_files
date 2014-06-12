@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]; then
+    echo "usage: $0 filename"
+else
+    gcc -Wall -fno-asynchronous-unwind-tables -std=c99 -S -O0 ${1%%.*}.c
+
+    # this will include cfi labels and optimization
+    #gcc -Wall -ggdb -std=c99 -S ${1%%.*}.c
+
+    if [ -e "${1%%.*}.S" ]; then
+        echo "Wrote ${1%%.*}.S successfully."
+    elif [ -e "${1%%.*}.s" ]; then
+        echo "Wrote ${1%%.*}.s successfully."
+    fi
+fi
