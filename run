@@ -3,5 +3,6 @@
 if [ $# -ne 1 ]; then
     echo "usage: $0 filename"
 else
-    gcc -Wall -ggdb -std=c99 -c ${1%%.*}.c && gcc -Wall -ggdb -std=c99 -o ${1%%.*} ${1%%.*}.o && ./${1%%.*} && rm ${1%%.*}{,.o}
+    filename=$(basename "$1")
+    gcc -Wall -ggdb -std=c99 -c ${filename%.*}.c && gcc -Wall -ggdb -std=c99 -o ${filename%.*} ${filename%.*}.o && ./${filename%.*} && rm ${filename%.*}{,.o}
 fi
