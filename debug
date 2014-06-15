@@ -4,14 +4,14 @@ if [ $# -ne 1 ]; then
     echo "usage: $0 filename"
 else
     filename=$(basename "$1")
-    gcc -Wall -fno-asynchronous-unwind-tables -std=c99 -S -O0 -masm=intel ${filename%.*}.c
+    # cfi directives is a must; LLVM removed the
+    # ability to avoid putting cfi directives in
+    # the assembly output.
+    clang -Wall -std=c99 -S -O0 -mllvm --x86-asm-syntax=intel ${filename%.*}.c
 
-    # this will include cfi labels and optimization
-    #gcc -Wall -ggdb -std=c99 -S ${filename%.*}.c
-
-    if [ -e "${filename%.*}.S" ]; then
-        echo "Wrote .S successfully."
-    elif [ -e "${filename%.*}.s" ]; then
+    if [[ -n `find . -name ${filename%.*}.S` ]]; then
+        echo "Wrote ${filename%.*}.S successfully."
+    elif [[ -n `find . -name ${filename%.*}.s` ]]; then
         echo "Wrote ${filename%.*}.s successfully."
     fi
 fi
