@@ -9,9 +9,9 @@ else
     # this will include cfi labels and optimization
     #gcc -Wall -ggdb -std=c99 -S ${filename%.*}.c
 
-    if [ -e "${filename%.*}.S" ]; then
-        echo "Wrote .S successfully."
-    elif [ -e "${filename%.*}.s" ]; then
+    if [[ -n `find . -name ${filename%.*}.S` ]]; then
+        echo "Wrote ${filename%.*}.S successfully."
+    elif [[ -n `find . -name ${filename%.*}.s` ]]; then
         echo "Wrote ${filename%.*}.s successfully."
     fi
 fi
