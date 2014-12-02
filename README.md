@@ -1,4 +1,4 @@
 bin_files
 =========
 
-Some scripts I've written to assist me with various tasks
+These are a set of assistive scripts that I wrote or snatched off of the Internet to help me on the command line.
