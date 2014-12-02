@@ -4,7 +4,7 @@ if [ $# -ne 1 ]; then
     echo "usage: $0 filename"
 else
     filename=$(basename "$1")
-    gcc -Wall -fno-asynchronous-unwind-tables -std=c99 -S -O0 ${filename%.*}.c
+    gcc -Wall -fno-asynchronous-unwind-tables -S -O0 ${filename%.*}.cpp
 
     # this will include cfi labels and optimization
     #gcc -Wall -ggdb -std=c99 -S ${filename%.*}.c
