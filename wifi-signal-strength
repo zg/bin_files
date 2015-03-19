@@ -36,4 +36,4 @@ do
 done
 signal="${signal} )"
 
-echo "${name} ~ ${bandwidth}Mbps ~ ${signal}"
+echo "${name} - ${bandwidth} Mbps - ${signal}"

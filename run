@@ -1,8 +1,14 @@
 #!/bin/zsh
 
-if [ $# -ne 1 ]; then
-    echo "usage: $0 filename"
+# Attempts to compile, link, and assemble the executable for the provided
+# file in the command-line argument.  If successful, the produced executable
+# will be run with the given arguments, followed by removing the executable
+# and the associated object file.
+
+if [ $# -lt 1 ]; then
+    echo "usage: $0 filename arg1 arg2 .."
 else
     filename=$(basename "$1")
-    gcc -Wall -ggdb -std=c99 -c ${filename%.*}.c && gcc -Wall -ggdb -std=c99 -o ${filename%.*} ${filename%.*}.o && ./${filename%.*} && rm ${filename%.*}{,.o}
+    shift
+    gcc -Wall -Wextra -std=c99 -c ${filename%.*}.c && gcc -Wall -Wextra -ggdb -std=c99 -o ${filename%.*} ${filename%.*}.o && ./${filename%.*} $@ && rm ${filename%.*}{,.o}
 fi
