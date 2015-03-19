@@ -1,8 +1,9 @@
 #!/bin/zsh
 
-if [ $# -ne 1 ]; then
+if [ $# -lt 1 ]; then
     echo "usage: $0 filename"
 else
     filename=$(basename "$1")
-    g++ -Wall -ggdb -c ${filename%.*}.cpp && g++ -Wall -ggdb -o ${filename%.*} ${filename%.*}.o && ./${filename%.*} && rm ${filename%.*}{,.o}
+    shift
+    g++ -Wall -Wextra -ggdb -c ${filename%.*}.cpp && g++ -Wall -Wextra -ggdb -o ${filename%.*} ${filename%.*}.o && ./${filename%.*} $@ && rm ${filename%.*}{,.o}
 fi
