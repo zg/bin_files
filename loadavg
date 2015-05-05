@@ -1,6 +1,6 @@
 #!/bin/bash
 
-loadavg=`cat /proc/loadavg 2>/dev/null`
+loadavg=`cat /proc/loadavg 2>/dev/null | cut -d " " -f -3`
 
 if [ "$loadavg" == "" ]
 then
