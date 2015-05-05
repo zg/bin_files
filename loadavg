@@ -1,0 +1,10 @@
+#!/bin/bash
+
+loadavg=`cat /proc/loadavg 2>/dev/null`
+
+if [ "$loadavg" == "" ]
+then
+  echo `sysctl -n vm.loadavg | sed 's/{\ //;s/\ }//'`
+else
+  echo "$loadavg"
+fi
