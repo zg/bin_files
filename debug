@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 # Stops after the stage of compilation proper; does not assemble.  The output
 # is in the form of an assembler code file.

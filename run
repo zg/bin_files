@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 # Attempts to compile, link, and assemble the executable for the provided
 # file in the command-line argument.  If successful, the produced executable

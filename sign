@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 if [ $# -ne 2 ]; then
     echo "usage: $0 email file"
