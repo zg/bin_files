@@ -3,5 +3,5 @@
 if [ $# -ne 1 ]; then
     echo "usage: $0 word"
 else
-    echo $(wget -qO- http://a.zk.gd/d.php?w=$1)
+    echo $(wget -qO- http://dict.zk.gd/$1)
 fi
