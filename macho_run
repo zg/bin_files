@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Attempts to assemble and link a given file from assembly source code.
+# This file is specifically designed to work with Mach-O based files.
+
+if [ $# -lt 1 ]; then
+    echo "usage: $0 filename arg1 arg2 .."
+else
+    filename=$(basename "$1")
+    shift
+    as ${filename%.*}.s -o ${filename%.*}.o && ld ${filename%.*}.o -e _main -o ${filename%.*} && echo "${filename%.*} executable created successfully."
+fi
