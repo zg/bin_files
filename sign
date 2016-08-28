@@ -1,7 +1,0 @@
-#!/bin/sh
-
-if [ $# -ne 2 ]; then
-    echo "usage: $0 email file"
-else
-    gpg --encrypt --sign --armor -r $1 $2
-fi
